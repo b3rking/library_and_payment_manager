@@ -2,7 +2,10 @@
 
 namespace App\Exceptions;
 
+// use GuzzleHttp\Psr7\Request;
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -35,6 +38,17 @@ class Handler extends ExceptionHandler
     {
         $this->reportable(function (Throwable $e) {
             //
+        });
+
+        $this->renderable(function(NotFoundHttpException $e, Request $request) {
+            // add the check to see if it's an api response
+            if ($request->is('api/*')) {
+                return response([
+                    'success' => 'false',
+                    'error' => [
+                        'endpoint not existing'    
+                    ]], 404);
+            }
         });
     }
 }
