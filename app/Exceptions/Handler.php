@@ -41,7 +41,6 @@ class Handler extends ExceptionHandler
         });
 
         $this->renderable(function(NotFoundHttpException $e, Request $request) {
-            // add the check to see if it's an api response
             if ($request->is('api/*')) {
                 return response([
                     'success' => 'false',
