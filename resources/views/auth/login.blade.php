@@ -38,8 +38,8 @@
 
                         @csrf
 
-                        <div class="wrap-input100 validate-input" data-validate="Enter username">
-                            <input class="input100  @error('email') is-invalid @enderror" type="text" name="email" value="{{ old('email') }}" placeholder="User name">
+                        <div class="wrap-input100 validate-input" data-validate="Enter email">
+                            <input class="input100  @error('email') is-invalid @enderror" type="text" name="email" value="{{ old('email') }}" placeholder="email">
                             <span class="focus-input100" data-placeholder=""></span>
                         </div>
                         <div class="wrap-input100 validate-input alert-validate" data-validate="Enter password">
